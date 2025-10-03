@@ -30,7 +30,7 @@ app.use(
         imgSrc: ["'self'", "data:", "blob:"],
         connectSrc: [
           "'self'", 
-          "https://backends-1-kzw8.onrender.com"  // ✅ allow API requests
+          "https://backends-1-kzw8.onrender.com"  // 
         ],
         fontSrc: ["'self'", "https:", "data:"],
         objectSrc: ["'none'"],
@@ -40,7 +40,14 @@ app.use(
   })
 );
 
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors({
+  origin: [
+    "https://enchanting-mooncake-7ebc83.netlify.app",
+    "http://localhost:5173" 
+  ],
+  credentials: true
+}));
+
 app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
